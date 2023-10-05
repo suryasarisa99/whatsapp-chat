@@ -5,7 +5,7 @@ import { chat1 } from "../data1";
 import { chat2 } from "../data2";
 export default function Home() {
   const { setFileContent } = useContext(DataContext);
-  const [fileName, setFileName] = useState("");
+  const [fileName, setFileName] = useState();
   const navigate = useNavigate();
   const inputRef = useRef(null);
 
@@ -18,6 +18,8 @@ export default function Home() {
     reader.onload = (e) => {
       const content = e.target.result;
       setFileContent(content);
+      if (file.name.toLowerCase().includes("teju"))
+        localStorage.setItem("teju", JSON.stringify(content));
       navigate("/chat");
     };
     reader.readAsText(file);
