@@ -1,0 +1,162 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.chat-block {
+  width: 100%;
+  // background-color: rgb(0, 0, 0);
+}
+.chat-block.p1 {
+  display: flex;
+  justify-content: end;
+  flex-shrink: 0;
+  padding-right: 5px;
+  .chat {
+    background-color: #005c4b;
+  }
+
+  .time {
+    right: 8px;
+  }
+}
+.chat-block.p2 {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: start;
+  padding-left: 5px;
+  .chat {
+    background-color: #202c33;
+  }
+  .time {
+    left: 8px;
+  }
+}
+
+.chat {
+  min-width: 100px;
+  max-width: 40%;
+  background-color: rgb(48, 48, 48);
+  border-radius: 6px;
+  padding: 4px 8px;
+  padding-bottom: 14px;
+  margin-bottom: 4px;
+  font-size: 16px;
+  position: relative;
+  font-family: sans-serif;
+
+  .time {
+    font-size: 9px;
+    position: absolute;
+    bottom: 3px;
+    color: rgb(169, 169, 169);
+  }
+
+  .mssg {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .chat {
+    max-width: 82%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .chat {
+    max-width: 82%;
+  }
+}
+
+.inner-body {
+  height: 100vh;
+  overflow: auto;
+  padding-top: 20px;
+  // filter: blur(5px);
+}
+
+.home {
+  background-color: #111b21;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+
+  input {
+    display: none;
+  }
+
+  button {
+    border: none;
+    background-color: rgb(0, 190, 124);
+    padding: 8px 15px;
+    font-size: 18px;
+    border-radius: 6px;
+  }
+}
+
+.date {
+  background-color: #1c272d;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 20px 0;
+  // justify-content: ;
+}
+
+.about {
+  // background-color: rgb(40, 54, 64);
+  background-color: #202c33;
+  padding: 14px 15px;
+  border-radius: 12px;
+  margin: 0 15px;
+
+  .info-item {
+    margin-bottom: 15px;
+    color: rgb(192, 192, 192);
+  }
+
+  .row {
+    display: flex;
+    gap: 25px;
+  }
+
+  .info-date,
+  .info-cnt {
+    padding: 4px 8px;
+    // background-color: rgb(63, 85, 100);
+    background-color: #384e5b;
+
+    border-radius: 6px;
+    margin-left: 5px;
+  }
+}
+
+.menu-icon {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  padding-right: 8px;
+}
+.menu {
+  padding: 4px 4px;
+  background-color: #202c33;
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  right: 5px;
+  z-index: 1;
+  border-radius: 10px;
+  .menu-item {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+  }
+}
