@@ -154,7 +154,8 @@ function getMessages(text) {
       const [date, time] = timestamp.split(", ");
       let [name, mssg] = content.split(":");
       let file;
-      if (mssg.includes("(file attached)"))
+
+      if (mssg && mssg.includes("(file attached)"))
         [file, mssg] = mssg.split("(file attached)");
 
       const obj = {
@@ -165,8 +166,8 @@ function getMessages(text) {
         file: file?.trim(),
       };
       // console.log(obj);  
-      // if (mssg && mssg?.trim()?.length == 12 && !mssg.includes(' ')) return obj;
-      if (mssg) return obj;
+      if (mssg && mssg?.trim()?.length == 12 && !mssg.includes(' ')) return obj;
+      // if (mssg) return obj;
     })
     .filter((item) => item?.mssg);
 }
