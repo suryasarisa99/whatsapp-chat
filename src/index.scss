@@ -160,3 +160,20 @@ body {
     padding: 6px 10px;
   }
 }
+
+.file {
+}
+
+.img {
+  max-width: 180px;
+  max-height: 220px;
+  width: 40vw;
+  height: 45vw;
+  background-color: rgb(38, 38, 38);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

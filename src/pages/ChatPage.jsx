@@ -13,7 +13,7 @@ export default function ChatPage() {
 
   let prvDate = useRef(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   useEffect(() => {
     if (fileContent.length == 0) return;
@@ -41,6 +41,9 @@ export default function ChatPage() {
         }}
       >
         <div className="chat">
+          {chat.file &&
+            <p className="img"></p>
+          }
           <p className="mssg">{chat.mssg}</p>
           <div className="time">{chat.time}</div>
         </div>
@@ -149,15 +152,20 @@ function getMessages(text) {
     .map((message, index) => {
       const [timestamp, content] = message.split(" - ");
       const [date, time] = timestamp.split(", ");
-      const [name, mssg] = content.split(":");
+      let [name, mssg] = content.split(":");
+      let file;
+      if (mssg.includes("(file attached)"))
+        [file, mssg] = mssg.split("(file attached)");
 
       const obj = {
         date: date?.trim(),
         time: time?.trim(),
         name: name?.trim(),
         mssg: mssg?.trim(),
+        file: file?.trim(),
       };
-      // console.log(obj);
+      // console.log(obj);  
+      // if (mssg && mssg?.trim()?.length == 12 && !mssg.includes(' ')) return obj;
       if (mssg) return obj;
     })
     .filter((item) => item?.mssg);
