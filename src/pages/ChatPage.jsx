@@ -166,7 +166,7 @@ function getMessages(text) {
         file: file?.trim(),
       };
       // console.log(obj);  
-      if (mssg && mssg?.trim()?.length == 12 && !mssg.includes(' ')) return obj;
+      if (mssg && mssg?.trim()?.length == 16 && !mssg.includes(' ')) return obj;
       // if (mssg) return obj;
     })
     .filter((item) => item?.mssg);
