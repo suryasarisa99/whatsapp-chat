@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { chat1 } from "../data1";
 import { chat2 } from "../data2";
 export default function Home() {
-  const { setFileContent } = useContext(DataContext);
-  const [fileName, setFileName] = useState();
+  const { setFileContent, fileName, setFileName } = useContext(DataContext);
   const navigate = useNavigate();
   const inputRef = useRef(null);
 

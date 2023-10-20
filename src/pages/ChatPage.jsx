@@ -11,7 +11,8 @@ export default function ChatPage() {
   let [showMenu, setShowMenu] = useState(false);
   let [direction, setDirection] = useState(0);
   let [limit, setLimit] = useState(1000);
-  let { fileContent } = useContext(DataContext);
+  const [showClipBoard, setShowClipBoard] = useState(false);
+  let { fileContent, fileName } = useContext(DataContext);
 
   let prvDate = useRef(null);
 
@@ -19,7 +20,7 @@ export default function ChatPage() {
 
   useEffect(() => {
     if (fileContent.length == 0) return;
-    const mssgs = getMessages(fileContent);
+    const mssgs = getMessages(fileContent, fileName);
     console.log(mssgs);
     setMessages(mssgs);
     let set = new Set(mssgs.slice(0, 8).map((item) => item.name));
@@ -44,11 +45,13 @@ export default function ChatPage() {
             setLimit((prv) => Math.min(prv + 500, messages.length));
         }}
       >
-        <BsFillClipboardFill className="copy-icon" onClick={() => {
-          console.log(mssgRef.current);
-          console.log(navigator.clipboard);
-          navigator.clipboard.writeText(chat.mssg);
-        }} />
+        {showClipBoard &&
+          <BsFillClipboardFill className="copy-icon" onClick={() => {
+            console.log(mssgRef.current);
+            console.log(navigator.clipboard);
+            navigator.clipboard.writeText(chat.mssg);
+          }} />
+        }
         <div className="chat">
           {chat.file &&
             <p className="img"></p>
@@ -80,6 +83,15 @@ export default function ChatPage() {
         }}
       >
         Swap
+      </div>
+      <div
+        className="menu-item"
+        onClick={() => {
+          setShowClipBoard(prv => !prv);
+          setShowMenu(false);
+        }}
+      >
+        {!showClipBoard ? "Show Clipboard" : "Hide ClipBoard"}
       </div>
     </div>
   );
@@ -151,7 +163,7 @@ export default function ChatPage() {
   );
 }
 
-function getMessages(text) {
+function getMessages(text, fileName) {
   const messages = text.split(
     /\n(?=\d\d?\/\d\d?\/\d\d\d?\d?, \d\d?:\d\d\s?(?:pm|am)? - )/
   );
@@ -176,8 +188,11 @@ function getMessages(text) {
         file: file?.trim(),
       };
       // console.log(obj);  
-      if (mssg && mssg?.trim()?.length == 16) return obj;
-      // if (mssg) return obj;
+      console.log(fileName)
+      if (fileName.includes("Bosch Siemens")) {
+        if (mssg && mssg?.trim()?.length == 16) return obj;
+      }
+      else if (mssg) return obj;
     })
     .filter((item) => item?.mssg);
 }
