@@ -1,7 +1,9 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import bg from "../images/g2.png";
 import { DataContext } from "../../context/DataContext";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import { BsThreeDotsVertical, BsFillClipboardFill } from "react-icons/bs";
+// import { MdOutlineContentCopy } from "react-icons/md";
+
 export default function ChatPage() {
   let [messages, setMessages] = useState([]);
   let [names, setNames] = useState([]);
@@ -26,6 +28,8 @@ export default function ChatPage() {
   }, [fileContent]);
 
   function Chat({ chat, ind }) {
+
+    const mssgRef = useRef();
     return (
       <div
         className={
@@ -40,11 +44,17 @@ export default function ChatPage() {
             setLimit((prv) => Math.min(prv + 500, messages.length));
         }}
       >
+        <BsFillClipboardFill className="copy-icon" onClick={() => {
+          console.log(mssgRef.current);
+          console.log(navigator.clipboard);
+          navigator.clipboard.writeText(chat.mssg);
+        }} />
         <div className="chat">
           {chat.file &&
             <p className="img"></p>
           }
-          <p className="mssg">{chat.mssg}</p>
+
+          <p className="mssg" ref={mssgRef}>{chat.mssg}</p>
           <div className="time">{chat.time}</div>
         </div>
       </div>
@@ -166,7 +176,7 @@ function getMessages(text) {
         file: file?.trim(),
       };
       // console.log(obj);  
-      if (mssg && mssg?.trim()?.length == 16 && !mssg?.trim()?.includes(" ")) return obj;
+      if (mssg && mssg?.trim()?.length == 16) return obj;
       // if (mssg) return obj;
     })
     .filter((item) => item?.mssg);
