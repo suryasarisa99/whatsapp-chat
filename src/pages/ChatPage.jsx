@@ -10,13 +10,13 @@ export default function ChatPage() {
   let [showInfo, setShowInfo] = useState(false);
   let [showMenu, setShowMenu] = useState(false);
   let [direction, setDirection] = useState(0);
-  let [limit, setLimit] = useState(1000);
+  let [limit, setLimit] = useState(100);
   const [showClipBoard, setShowClipBoard] = useState(false);
   let { fileContent, fileName } = useContext(DataContext);
 
   let prvDate = useRef(null);
 
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (fileContent.length == 0) return;
@@ -29,7 +29,6 @@ export default function ChatPage() {
   }, [fileContent]);
 
   function Chat({ chat, ind }) {
-
     const mssgRef = useRef();
     return (
       <div
@@ -45,19 +44,26 @@ export default function ChatPage() {
             setLimit((prv) => Math.min(prv + 500, messages.length));
         }}
       >
-        {showClipBoard &&
-          <BsFillClipboardFill className="copy-icon" onClick={() => {
-            console.log(mssgRef.current);
-            console.log(navigator.clipboard);
-            navigator.clipboard.writeText(chat.mssg);
-          }} />
-        }
-        <div className="chat">
-          {chat.file &&
-            <p className="img"></p>
+        {showClipBoard && (
+          <BsFillClipboardFill
+            className="copy-icon"
+            onClick={() => {
+              console.log(mssgRef.current);
+              console.log(navigator.clipboard);
+              navigator.clipboard.writeText(chat.mssg);
+            }}
+          />
+        )}
+        <div
+          className={
+            "chat " + (chat.mssg?.length < 30 ? "chat-flex" : "chat-abs")
           }
+        >
+          {chat.file && <p className="img"></p>}
 
-          <p className="mssg" ref={mssgRef}>{chat.mssg}</p>
+          <p className="mssg" ref={mssgRef}>
+            {chat.mssg}
+          </p>
           <div className="time">{chat.time}</div>
         </div>
       </div>
@@ -87,7 +93,7 @@ export default function ChatPage() {
       <div
         className="menu-item"
         onClick={() => {
-          setShowClipBoard(prv => !prv);
+          setShowClipBoard((prv) => !prv);
           setShowMenu(false);
         }}
       >
@@ -187,12 +193,11 @@ function getMessages(text, fileName) {
         mssg: mssg?.trim(),
         file: file?.trim(),
       };
-      // console.log(obj);  
-      console.log(fileName)
+      // console.log(obj);
+      console.log(fileName);
       if (fileName.includes("Bosch Siemens")) {
         if (mssg && mssg?.trim()?.length == 16) return obj;
-      }
-      else if (mssg) return obj;
+      } else if (mssg) return obj;
     })
     .filter((item) => item?.mssg);
 }
