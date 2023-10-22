@@ -4,6 +4,13 @@ const DataContext = createContext();
 export default function DataProvider({ children }) {
   const [fileContent, setFileContent] = useState("");
   const [fileName, setFileName] = useState("");
+  const [chats, setChats] = useState(
+    JSON.parse(localStorage.getItem("chats")) || []
+  );
+
+  useEffect(() => {
+    console.log(chats);
+  }, [chats]);
 
   return (
     <DataContext.Provider
@@ -12,6 +19,8 @@ export default function DataProvider({ children }) {
         setFileContent,
         fileName,
         setFileName,
+        chats,
+        setChats,
       }}
     >
       {children}

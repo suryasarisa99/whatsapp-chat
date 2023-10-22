@@ -33,26 +33,31 @@ export default function ChatPage() {
   let prvDate = useRef(null);
 
   useEffect(() => {
-    return () => {
-      setMessages([]);
-      setDirection(0);
-      setNames([]);
-      setShowMenu(false);
-      setShowClipBoard(false);
-      setShowInfo(false);
-      setHasMore(true);
-      setRecords(300);
-    };
+    // return () => {
+    //   setMessages([]);
+    //   setDirection(0);
+    //   setNames([]);
+    //   setShowMenu(false);
+    //   setShowClipBoard(false);
+    //   setShowInfo(false);
+    //   setHasMore(true);
+    //   setRecords(300);
+    // };
   }, []);
 
   useEffect(() => {
-    if (fileContent.length == 0) return;
+    if (fileContent.length == 0 || messages.length > 0) return;
     const mssgs = getMessages(fileContent, fileName);
-    console.log(mssgs);
     setMessages(mssgs);
-    let set = new Set(mssgs.slice(0, 8).map((item) => item.name));
-    console.log(set);
-    setNames(Array.from(set));
+    let set = Array.from(new Set(mssgs.slice(0, 8).map((item) => item.name)));
+
+    if (fileName.includes(set[0])) {
+      let temp = set[0];
+      set.splice(0, 1);
+      set.push(temp);
+    }
+
+    setNames(set);
   }, [fileContent]);
 
   return (
@@ -71,8 +76,8 @@ export default function ChatPage() {
           records={records}
           loadMore={() => {
             if (records >= messages.length - 1) setHasMore(false);
-            else setTimeout(() => setRecords((prv) => prv + 500), 300);
-            // else setRecords((prv) => prv + 500);
+            // else setTimeout(() => setRecords((prv) => prv + 500), 300);
+            else setRecords((prv) => prv + 500);
           }}
           hasMore={hasMore}
           loader={<p className="loading">Loading ...</p>}

@@ -23,9 +23,6 @@ export default function Chat({ chat, ind }) {
     setShowClipBoard,
   } = useContext(ChatContext);
 
-  useEffect(() => {
-    console.log(names);
-  }, []);
   return (
     <div
       className={"chat-block " + (chat.name == names[direction] ? "p1" : "p2")}

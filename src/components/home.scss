@@ -165,3 +165,40 @@
     }
   }
 }
+
+.chat-item-2 {
+  padding: 4px 12px;
+  display: flex;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+  gap: 15px;
+  img {
+    width: 50px;
+    border-radius: 50%;
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+    .row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      //   background-color: red;
+      .name {
+        font-weight: 500;
+      }
+      .time {
+        // background-color: red;
+        font-size: 14px;
+        color: #59676f;
+      }
+    }
+    .last-mssg {
+      font-size: 16px;
+      color: #59676f;
+      padding-left: 10px;
+    }
+  }
+}

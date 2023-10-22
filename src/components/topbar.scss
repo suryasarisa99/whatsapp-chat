@@ -35,6 +35,11 @@
   }
 
   .icons {
+    display: flex;
+    gap: 20px;
+    .icon {
+      font-size: 18px;
+    }
     .menu {
       margin-right: 8px;
     }

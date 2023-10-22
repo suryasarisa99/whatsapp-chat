@@ -1,5 +1,5 @@
 import React from "react";
-import "./bottomBar.scss";
+import "./home.scss";
 import { BiSolidMessageDetail, BiSolidMessageAdd } from "react-icons/bi";
 import { TbMessagePlus } from "react-icons/tb";
 import { MdOutlinePhone, MdOutlinePeopleAlt } from "react-icons/md";

@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { DataContext } from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
 import { chat1 } from "../data1";
@@ -8,10 +8,42 @@ import HomeTopBar from "../components/HomeTopBar";
 import { BiSolidMessageAdd } from "react-icons/bi";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import Dp from "../components/blank-profile-picture-973460_1280.png";
+import ChatData from "../../context/ChatData";
+import { ChatContext } from "../../context/ChatData";
 export default function Home() {
-  const { setFileContent, fileName, setFileName } = useContext(DataContext);
+  const {
+    names,
+    messages,
+    setMessages,
+    showInfo,
+    setShowInfo,
+    showMenu,
+    setShowMenu,
+    direction,
+    setDirection,
+    hasMore,
+    setHasMore,
+    records,
+    setRecords,
+    showClipBoard,
+    setNames,
+    setShowClipBoard,
+  } = useContext(ChatContext);
+  const { setFileContent, fileName, setFileName, chats } =
+    useContext(DataContext);
   const navigate = useNavigate();
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    setMessages([]);
+    setNames([]);
+    setDirection(0);
+    setShowMenu(false);
+    setShowClipBoard(false);
+    setShowInfo(false);
+    setHasMore(true);
+    setRecords(300);
+  }, []);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -29,6 +61,8 @@ export default function Home() {
     reader.readAsText(file);
   };
 
+  console.log(chats);
+
   return (
     <div className="home">
       <HomeTopBar />
@@ -40,24 +74,40 @@ export default function Home() {
       />
 
       <div className="home-chats">
-        <ChatSection
+        <ChatSection2
           onClick={() => {
             setFileContent(chat2);
+            setFileName("Vijaya Btech");
             navigate("/chat");
           }}
-          s="Vijaya Btech"
+          name="Vijya Btech"
+          lastMssg="Hi"
+          time="11:15 pm"
           r="Tarun Kumar"
         />
-        <ChatSection
+        <ChatSection2
           onClick={() => {
             setFileContent(chat1);
             navigate("/chat");
           }}
-          s="Anil Kumar"
-          r="Barbie Girl"
+          name="Barbie girll😝"
+          lastMssg="Akuva chyku anav ga chynu le anna"
+          time="3:02 pm"
         />
+        {chats.map((x) => (
+          <ChatSection2
+            onClick={() => {
+              setNames(x.names);
+              setMessages(x.messages);
+              navigate("/chat");
+            }}
+            key={x.names?.[0] + x.names?.[1]}
+            name={x.names[1]}
+            lastMssg={x.lastMssg}
+            time={x.time}
+          />
+        ))}
       </div>
-
       <div
         className="float-btn-outer"
         onClick={(e) => {
@@ -89,19 +139,16 @@ function ChatSection({ onClick, s, r }) {
     </div>
   );
 }
-function ChatSection2({ onClick, s, r }) {
+function ChatSection2({ onClick, name, lastMssg, time }) {
   return (
-    <div className="chat-item" onClick={onClick}>
+    <div className="chat-item-2" onClick={onClick}>
       <img src={Dp} />
-      <div className="people">
-        <div className="p1">
-          <FaLongArrowAltLeft className="icon" />
-          <div className="sender">{s}</div>
+      <div className="body">
+        <div className="row">
+          <div className="name">{name}</div>
+          <div className="time">{time}</div>
         </div>
-        <div className="p2">
-          <div className="reciver">{r}</div>
-          <FaLongArrowAltRight className="icon" />
-        </div>
+        <div className="last-mssg">{lastMssg}</div>
       </div>
     </div>
   );
