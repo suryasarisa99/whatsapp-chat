@@ -34,8 +34,8 @@ export default function TopBar() {
       <img src={DP} className="dp" alt="" />
       <div className="title">{names[direction == 1 ? 0 : 1]}</div>
 
-      <div className="icons" onClick={save}>
-        <div className="save-icon icon">
+      <div className="icons">
+        <div className="save-icon icon" onClick={save}>
           <FaSave />
         </div>
         <div className="menu-icon icon" onClick={() => setShowMenu(true)}>
