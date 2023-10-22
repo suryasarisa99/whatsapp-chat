@@ -1,17 +1,13 @@
-import React from "react";
-
+import { useContext } from "react";
 import "./themes.scss";
 import { useNavigate } from "react-router-dom";
+import { ChatContext } from "../../context/ChatData";
+import { DataContext } from "../../context/DataContext";
 export default function Themes() {
   const navigate = useNavigate();
   const themes = ["default", "gray"];
+  const { changeStatusBarColor } = useContext(DataContext);
 
-  const changeThemeColor = (color) => {
-    const themeColorMeta = document.querySelector("meta[name='theme-color']");
-    if (themeColorMeta) {
-      themeColorMeta.content = color;
-    }
-  };
   return (
     <div className="themes-page">
       <div className="themes">
@@ -23,8 +19,7 @@ export default function Themes() {
               document.documentElement.className = "";
               document.documentElement.classList.add(themes[ind]);
               localStorage.setItem("theme", themes[ind]);
-              // handleChangeBackgroundColor("");/
-              changeThemeColor("#181c21");
+              changeStatusBarColor(themes[ind]);
               navigate(-1);
             }}
           ></div>
