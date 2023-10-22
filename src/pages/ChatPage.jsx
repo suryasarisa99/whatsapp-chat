@@ -77,7 +77,7 @@ export default function ChatPage() {
           loadMore={() => {
             if (records >= messages.length - 1) setHasMore(false);
             // else setTimeout(() => setRecords((prv) => prv + 500), 300);
-            else setRecords((prv) => prv + 500);
+            else setRecords((prv) => prv + 1500);
           }}
           hasMore={hasMore}
           loader={<p className="loading">Loading ...</p>}
