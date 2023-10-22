@@ -1,0 +1,11 @@
+.themes-page {
+  .themes {
+    display: flex;
+    gap: 10px;
+    .theme-box {
+      width: 120px;
+      height: 85px;
+      background-color: rgb(41, 42, 52);
+    }
+  }
+}

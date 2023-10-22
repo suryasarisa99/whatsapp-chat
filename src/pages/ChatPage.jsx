@@ -64,7 +64,7 @@ export default function ChatPage() {
     <div
       className="inner-body"
       style={{
-        backgroundImage: `url(${bg})`,
+        // backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
       }}
     >

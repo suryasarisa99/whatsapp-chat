@@ -6,7 +6,7 @@
 
 .bottom-bar {
   padding: 10px 15px;
-  background-color: #202c33;
+  background-color: var(--secondary-color);
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -44,7 +44,7 @@
 .icons {
   .icon-selected {
     .icon-outer {
-      background-color: #3e4b52;
+      background-color: var(--heighlight-color);
       .icon-inner {
         color: white;
       }
@@ -62,7 +62,7 @@
   width: 55px;
   border-radius: 14px;
   height: 55px;
-  background-color: #00a884;
+  background-color: var(--teritiary-color);
   position: absolute;
   right: 18px;
   bottom: 95px;
@@ -76,11 +76,10 @@
 }
 
 .home-top-bar {
-  background-color: #202c33;
+  background-color: var(--secondary-color);
   width: 100%;
   padding: 20px;
   display: flex;
-  //   justify-content: cent;
   align-items: center;
   font-family: sans-serif;
   .title {
@@ -95,7 +94,7 @@
 }
 
 .home-chats {
-  background-color: #111b21;
+  background-color: var(--main-color);
   width: 100%;
   height: calc(100vh - 89px - 48px);
   position: relative;
@@ -151,7 +150,6 @@
     .p1,
     .p2 {
       width: 60%;
-      //   background-color: green;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -193,12 +191,12 @@
       .time {
         // background-color: red;
         font-size: 14px;
-        color: #59676f;
+        color: var(--secondary-text-color);
       }
     }
     .last-mssg {
       font-size: 16px;
-      color: #59676f;
+      color: var(--secondary-text-color);
       padding-left: 10px;
     }
   }

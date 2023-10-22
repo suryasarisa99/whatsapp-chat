@@ -8,6 +8,12 @@ export default function DataProvider({ children }) {
     JSON.parse(localStorage.getItem("chats")) || []
   );
 
+  useEffect(() => {
+    document.documentElement?.classList?.add(
+      localStorage.getItem("theme") || "default"
+    );
+  }, []);
+
   return (
     <DataContext.Provider
       value={{

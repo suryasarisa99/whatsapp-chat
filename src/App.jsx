@@ -9,7 +9,7 @@ import { ChatContext } from "../context/ChatData";
 import BottomBar from "./components/BottomBar";
 import { BiSolidMessageAdd } from "react-icons/bi";
 import Clear from "./pages/Clear";
-
+import Themes from "./pages/Themes";
 function App() {
   return (
     // <ChatContext>
@@ -17,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="chat" element={<ChatPage />} />
+        <Route path="themes" element={<Themes />} />
         <Route path="clear" element={<Clear />} />
       </Routes>
 

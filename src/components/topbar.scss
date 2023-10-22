@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .top-bar {
-  background-color: #202c33;
+  background-color: var(--secondary-color);
   padding: 8px 4px;
   display: flex;
   margin-bottom: 15px;
