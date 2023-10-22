@@ -1,0 +1,137 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.bottom-bar {
+  padding: 10px 15px;
+  background-color: #202c33;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  gap: 14px;
+  justify-content: space-around;
+  .icon-block {
+    // background-color: red;
+    .icon-outer {
+      padding: 6px 18px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+
+      .icon-inner {
+        color: rgba(164, 164, 164, 0.744);
+        font-size: 22px;
+      }
+    }
+
+    .icon-label {
+      font-size: 14px;
+      color: rgba(190, 190, 190, 0.748);
+      text-align: center;
+      font-family: sans-serif;
+    }
+  }
+}
+
+.icons {
+  .icon-selected {
+    .icon-outer {
+      background-color: #3e4b52;
+      .icon-inner {
+        color: white;
+      }
+    }
+    .icon-label {
+      color: white;
+    }
+  }
+}
+
+.float-btn-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  border-radius: 14px;
+  height: 55px;
+  background-color: #00a884;
+  position: absolute;
+  right: 18px;
+  bottom: 95px;
+  //   bottom: calc(100% + 20px);
+  z-index: 2;
+
+  .icon {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+  }
+}
+
+.home-top-bar {
+  background-color: #202c33;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  //   justify-content: cent;
+  align-items: center;
+  font-family: sans-serif;
+  .title {
+    flex-grow: 1;
+    font-size: 23px;
+  }
+  .icons {
+    font-size: 23px;
+    display: flex;
+    gap: 25px;
+  }
+}
+
+.home-chats {
+  background-color: #111b21;
+  width: 100%;
+  height: calc(100vh - 89px - 48px);
+  position: relative;
+  overflow: auto;
+  padding-top: 4px;
+  padding-bottom: 65px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: 0px;
+}
+.chat-item {
+  width: 100%;
+  //   background-color: #1d2529;
+  height: 55px;
+  margin: 4px 0;
+  padding: 8px 14px;
+  display: flex;
+  gap: 18px;
+
+  img {
+    width: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .people {
+    flex-grow: 1;
+    color: #b8d2e0;
+    display: flex;
+    flex-direction: column;
+    .reciver {
+      text-align: start;
+    }
+    .sender {
+      text-align: end;
+    }
+  }
+}
