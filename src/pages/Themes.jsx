@@ -6,15 +6,11 @@ export default function Themes() {
   const navigate = useNavigate();
   const themes = ["default", "gray"];
 
-  const handleChangeBackgroundColor = () => {
-    // Update the manifest file
-    const manifest = {
-      ...window.navigator.serviceWorker.manifest,
-      background_color: "#181c21",
-      theme_color: "#181c21",
-    };
-
-    window.navigator.serviceWorker.register(manifest);
+  const changeThemeColor = (color) => {
+    const themeColorMeta = document.querySelector("meta[name='theme-color']");
+    if (themeColorMeta) {
+      themeColorMeta.content = color;
+    }
   };
   return (
     <div className="themes-page">
@@ -27,7 +23,8 @@ export default function Themes() {
               document.documentElement.className = "";
               document.documentElement.classList.add(themes[ind]);
               localStorage.setItem("theme", themes[ind]);
-              handleChangeBackgroundColor();
+              // handleChangeBackgroundColor("");/
+              changeThemeColor("#181c21");
               navigate(-1);
             }}
           ></div>
