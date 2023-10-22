@@ -111,14 +111,18 @@
 .chat-item {
   width: 100%;
   //   background-color: #1d2529;
-  height: 55px;
+  height: 64px;
   margin: 4px 0;
   padding: 8px 14px;
   display: flex;
+  padding-right: 20px;
   gap: 18px;
+  border-bottom: 1px solid rgba(154, 215, 202, 0.144);
+  //   background-color: blue;
 
   img {
-    width: 38px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     object-fit: cover;
   }
@@ -127,11 +131,37 @@
     color: #b8d2e0;
     display: flex;
     flex-direction: column;
+    font-family: sans-serif;
+    justify-content: space-around;
+    // background-color: red;
+    font-size: 18px;
+    padding-right: 30px;
+
+    .icon {
+      font-size: 20px;
+    }
+    .p1 {
+      align-self: flex-end;
+    }
+    .p2 {
+      align-self: flex-start;
+    }
+
+    .p1,
+    .p2 {
+      width: 60%;
+      //   background-color: green;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     .reciver {
       text-align: start;
+      display: flex;
     }
     .sender {
       text-align: end;
+      display: flex;
     }
   }
 }
