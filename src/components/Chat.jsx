@@ -43,7 +43,7 @@ export default function Chat({ chat, ind }) {
           "chat " + (chat.mssg?.length < 30 ? "chat-flex" : "chat-abs")
         }
       >
-        {chat.file && <p className="img"></p>}
+        {chat.file && <p className="img">{chat.file}</p>}
         <p className="mssg" ref={mssgRef}>
           <p>{chat.mssg}</p>
           <div className="time">{chat.time}</div>
