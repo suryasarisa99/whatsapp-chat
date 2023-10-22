@@ -6,10 +6,14 @@ export default function DataProvider({ children }) {
   const [fileName, setFileName] = useState("");
 
   return (
-    <DataContext.Provider value={{
-      fileContent, setFileContent, fileName, setFileName
-    }
-    }>
+    <DataContext.Provider
+      value={{
+        fileContent,
+        setFileContent,
+        fileName,
+        setFileName,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );

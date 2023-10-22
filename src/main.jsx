@@ -5,12 +5,15 @@ import "./index.scss";
 import DataProvider from "../context/DataContext.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { registerSW } from "virtual:pwa-register";
+import ChatProvider from "../context/ChatData.jsx";
 registerSW();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <DataProvider>
-        <App />
+        <ChatProvider>
+          <App />
+        </ChatProvider>
       </DataProvider>
     </BrowserRouter>
   </React.StrictMode>

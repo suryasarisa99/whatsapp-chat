@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.top-bar {
+  background-color: #202c33;
+  padding: 8px 4px;
+  display: flex;
+  margin-bottom: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  align-items: center;
+
+  .back-icon {
+    font-size: 22px;
+    margin-right: 4px;
+  }
+  .dp {
+    background-color: rgb(60, 60, 60);
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  .title {
+    flex-grow: 1;
+    .name {
+      font-size: 22px;
+    }
+    .sub-text {
+      font-size: 11px;
+    }
+  }
+
+  .icons {
+    .menu {
+      margin-right: 8px;
+    }
+  }
+}
