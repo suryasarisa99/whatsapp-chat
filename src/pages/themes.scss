@@ -2,10 +2,30 @@
   .themes {
     display: flex;
     gap: 10px;
+    padding: 20px;
+    flex-wrap: wrap;
+    overflow: auto;
     .theme-box {
-      width: 120px;
+      width: 160px;
+      border-radius: 8px;
       height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
       background-color: rgb(41, 42, 52);
+    }
+    .red {
+      background-color: #211818;
+    }
+    .gray {
+      background-color: #141414;
+    }
+    .default {
+      background-color: #202c33;
+    }
+    .blue {
+      background-color: #181c21;
     }
   }
 }

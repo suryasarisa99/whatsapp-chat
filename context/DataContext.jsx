@@ -4,7 +4,13 @@ const DataContext = createContext();
 export default function DataProvider({ children }) {
   const [fileContent, setFileContent] = useState("");
   const [fileName, setFileName] = useState("");
-  const statusBarThemeMap = { default: "#202c33", gray: "#181c21" };
+  const [isDefaultTheme, setDefaultTheme] = useState(true);
+  const statusBarThemeMap = {
+    default: "#202c33",
+    gray: "#141414",
+    blue: "#181c21",
+    red: "#211818",
+  };
   const [chats, setChats] = useState(
     JSON.parse(localStorage.getItem("chats")) || []
   );
@@ -17,6 +23,8 @@ export default function DataProvider({ children }) {
 
   useEffect(() => {
     const theme = localStorage.getItem("theme") || "default";
+    if (theme == "default") setDefaultTheme(true);
+    else setDefaultTheme(false);
     document.documentElement?.classList?.add(theme);
     changeStatusBarColor(theme);
   }, []);
@@ -31,6 +39,8 @@ export default function DataProvider({ children }) {
         chats,
         setChats,
         changeStatusBarColor,
+        setDefaultTheme,
+        isDefaultTheme,
       }}
     >
       {children}

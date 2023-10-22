@@ -15,12 +15,42 @@
 }
 
 .gray {
+  --main-color: black;
+  --primary-color: #353535;
+  --secondary-color: #141414;
+  --teritiary-color: #272926;
+  --heighlight-color: var(--teritiary-color);
+  --text-color: white;
+  --secondary-text-color: #676b64;
+}
+
+.blue {
+  --main-color: black;
   --primary-color: #000000;
   --secondary-color: #181c21;
   --teritiary-color: #212532;
-  --main-color: black;
+  --heighlight-color: #212532;
   --text-color: white;
   --secondary-text-color: #59676f;
+}
+.red {
+  --main-color: black;
+  --primary-color: #000000;
+  --secondary-color: #211818;
+  --teritiary-color: #322121;
+  --heighlight-color: var(--teritiary-color);
+  --text-color: white;
+  --secondary-text-color: #6f5959;
+}
+
+.red-red {
+  --main-color: black;
+  --primary-color: #301515;
+  --secondary-color: #211818;
+  --teritiary-color: #322121;
+  --heighlight-color: var(--teritiary-color);
+  --text-color: white;
+  --secondary-text-color: #6f5959;
 }
 body {
   background-color: black;

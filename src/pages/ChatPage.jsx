@@ -11,7 +11,7 @@ import Info from "../components/Info";
 import { ChatContext } from "../../context/ChatData";
 
 export default function ChatPage() {
-  let { fileContent, fileName } = useContext(DataContext);
+  let { fileContent, fileName, isDefaultTheme } = useContext(DataContext);
   const {
     names,
     setNames,
@@ -64,7 +64,7 @@ export default function ChatPage() {
     <div
       className="inner-body"
       style={{
-        // backgroundImage: `url(${bg})`,
+        backgroundImage: isDefaultTheme && `url(${bg})`,
         backgroundSize: "cover",
       }}
     >
