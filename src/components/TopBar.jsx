@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import DP from "./blank-profile-picture-973460_1280.png";
 import { BsArrowLeft } from "react-icons/bs";
 import { FaEllipsisV, FaSave } from "react-icons/fa";
-
+import { v4 as uuid } from "uuid";
 import { ChatContext } from "../../context/ChatData";
 import Menu from "./Menu";
 import { DataContext } from "../../context/DataContext";
@@ -21,6 +21,7 @@ export default function TopBar() {
       names: names,
       lastMssg: messages[messages.length - 1].mssg,
       time: messages[messages.length - 1].time,
+      key: uuid(),
     };
     chats.push(chat);
     setChats([...chats]);

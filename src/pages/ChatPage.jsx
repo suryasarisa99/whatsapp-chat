@@ -124,7 +124,6 @@ function getMessages(text, fileName) {
         file: file?.trim(),
       };
       // console.log(obj);
-      console.log(fileName);
       if (fileName.includes("Bosch Siemens")) {
         if (mssg && mssg?.trim()?.length == 16) return obj;
       } else if (mssg) return obj;

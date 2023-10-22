@@ -9,6 +9,7 @@ import { ChatContext } from "../context/ChatData";
 import BottomBar from "./components/BottomBar";
 import { BiSolidMessageAdd } from "react-icons/bi";
 import Clear from "./pages/Clear";
+
 function App() {
   return (
     // <ChatContext>

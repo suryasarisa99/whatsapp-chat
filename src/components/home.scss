@@ -99,7 +99,8 @@
   width: 100%;
   height: calc(100vh - 89px - 48px);
   position: relative;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding-top: 4px;
   padding-bottom: 65px;
 

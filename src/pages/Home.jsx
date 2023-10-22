@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState, useCallback } from "react";
 import { DataContext } from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
 import { chat1 } from "../data1";
@@ -10,6 +10,7 @@ import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import Dp from "../components/blank-profile-picture-973460_1280.png";
 import ChatData from "../../context/ChatData";
 import { ChatContext } from "../../context/ChatData";
+import { motion } from "framer-motion";
 export default function Home() {
   const {
     names,
@@ -29,7 +30,7 @@ export default function Home() {
     setNames,
     setShowClipBoard,
   } = useContext(ChatContext);
-  const { setFileContent, fileName, setFileName, chats } =
+  const { setFileContent, fileName, setFileName, chats, setChats } =
     useContext(DataContext);
   const navigate = useNavigate();
   const inputRef = useRef(null);
@@ -47,7 +48,6 @@ export default function Home() {
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
-    console.log(file);
     setFileName(file?.name);
     const reader = new FileReader();
 
@@ -60,8 +60,6 @@ export default function Home() {
     };
     reader.readAsText(file);
   };
-
-  console.log(chats);
 
   return (
     <div className="home">
@@ -94,17 +92,24 @@ export default function Home() {
           lastMssg="Akuva chyku anav ga chynu le anna"
           time="3:02 pm"
         />
-        {chats.map((x) => (
+        {chats.map((x, index) => (
           <ChatSection2
             onClick={() => {
               setNames(x.names);
               setMessages(x.messages);
               navigate("/chat");
             }}
-            key={x.names?.[0] + x.names?.[1]}
+            // key={x.names?.[0] + "x" + x.names?.[1] + index}
+            key={x.key}
             name={x.names[1]}
             lastMssg={x.lastMssg}
             time={x.time}
+            index={index}
+            onRemove={(ind) => {
+              chats.splice(index, 1);
+              setChats([...chats]);
+              localStorage.setItem("chats", JSON.stringify(chats));
+            }}
           />
         ))}
       </div>
@@ -122,7 +127,7 @@ export default function Home() {
   );
 }
 
-function ChatSection({ onClick, s, r }) {
+function ChatSection({ onClick, s, r, index }) {
   return (
     <div className="chat-item" onClick={onClick}>
       <img src={Dp} />
@@ -139,9 +144,54 @@ function ChatSection({ onClick, s, r }) {
     </div>
   );
 }
-function ChatSection2({ onClick, name, lastMssg, time }) {
+function ChatSection2({ onClick, name, lastMssg, time, index, onRemove }) {
+  const [move, setMove] = useState(0);
+  const prvPos = useRef(0);
+  const chatItemRef = useRef(null);
+  const handleTe = useCallback(
+    (e) => {
+      // const currentPos = e.targetTouches[0].screenX;
+      // const diff = Math.abs(currentPos - prvPos.current);
+      if (Math.abs(move) < 180) setMove(0);
+      else {
+        setMove(move < 0 ? -500 : 500);
+        onRemove(index);
+      }
+    },
+    [move]
+  );
+
+  useEffect(() => {
+    if (onRemove) {
+      chatItemRef.current.addEventListener("touchstart", handleTs);
+      chatItemRef.current.addEventListener("touchmove", handleTm);
+      chatItemRef.current.addEventListener("touchend", handleTe);
+      const x = chatItemRef.current;
+      return () => {
+        x.removeEventListener("touchstart", handleTs);
+        x.removeEventListener("touchmove", handleTm);
+        x.removeEventListener("touchend", handleTe);
+      };
+    }
+  }, [handleTe]);
+
+  function handleTs(e) {
+    prvPos.current = e.targetTouches[0].screenX;
+  }
+  function handleTm(e) {
+    const currentPos = e.targetTouches[0].screenX;
+    const diff = currentPos - prvPos.current;
+    setMove(diff);
+  }
+
   return (
-    <div className="chat-item-2" onClick={onClick}>
+    <motion.div
+      // style={{ x: index == 0 ? move : 0 }}
+      style={{ x: move }}
+      className="chat-item-2"
+      onClick={onClick}
+      ref={chatItemRef}
+    >
       <img src={Dp} />
       <div className="body">
         <div className="row">
@@ -150,6 +200,6 @@ function ChatSection2({ onClick, name, lastMssg, time }) {
         </div>
         <div className="last-mssg">{lastMssg}</div>
       </div>
-    </div>
+    </motion.div>
   );
 }

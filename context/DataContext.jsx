@@ -8,10 +8,6 @@ export default function DataProvider({ children }) {
     JSON.parse(localStorage.getItem("chats")) || []
   );
 
-  useEffect(() => {
-    console.log(chats);
-  }, [chats]);
-
   return (
     <DataContext.Provider
       value={{
