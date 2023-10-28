@@ -126,7 +126,13 @@ function getMessages(text, fileName) {
       // console.log(obj);
       if (fileName.includes("Bosch Siemens")) {
         if (mssg && mssg?.trim()?.length == 16) return obj;
-      } else if (mssg) return obj;
+      } else if (
+        fileName.includes("Artes conference group") &&
+        mssg &&
+        mssg?.trim()?.length == 12
+      )
+        return obj;
+      else if (mssg) return obj;
     })
     .filter((item) => item?.mssg);
 }
