@@ -8,7 +8,7 @@ import BottomBar from "../components/BottomBar";
 import HomeTopBar from "../components/HomeTopBar";
 export default function Themes() {
   const navigate = useNavigate();
-  const themes = ["default", "gray", "blue", "red"];
+  const themes = ["default", "gray", "blue", "red", "light-green"];
   const { changeStatusBarColor, setDefaultTheme } = useContext(DataContext);
 
   return (

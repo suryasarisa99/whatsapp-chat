@@ -27,14 +27,14 @@
       margin-bottom: 8px;
 
       .icon-inner {
-        color: rgba(164, 164, 164, 0.744);
+        color: var(--slant-icon-color);
         font-size: 22px;
       }
     }
 
     .icon-label {
       font-size: 14px;
-      color: rgba(190, 190, 190, 0.748);
+      color: var(--slant-text-color);
       text-align: center;
       font-family: sans-serif;
     }
@@ -46,11 +46,12 @@
     .icon-outer {
       background-color: var(--heighlight-color);
       .icon-inner {
-        color: white;
+        color: var(--text-color);
       }
     }
     .icon-label {
-      color: white;
+      // color: white;
+      color: var(--text-color);
     }
   }
 }
@@ -71,7 +72,7 @@
 
   .icon {
     font-size: 20px;
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
   }
 }
 
@@ -82,6 +83,7 @@
   display: flex;
   align-items: center;
   font-family: sans-serif;
+  color: var(--text-color);
   .title {
     flex-grow: 1;
     font-size: 23px;
@@ -184,6 +186,7 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
+      color: var(--text-color);
       //   background-color: red;
       .name {
         font-weight: 500;

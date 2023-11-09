@@ -10,6 +10,7 @@ export default function DataProvider({ children }) {
     gray: "#141414",
     blue: "#181c21",
     red: "#211818",
+    "light-green": "#fbfdf6",
   };
   const [chats, setChats] = useState(
     JSON.parse(localStorage.getItem("chats")) || []

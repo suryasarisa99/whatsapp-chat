@@ -12,6 +12,8 @@
   --main-color: #111b21;
   --text-color: white;
   --secondary-text-color: #59676f;
+  --slant-text-color: rgba(164, 164, 164, 0.744);
+  --slant-icon-color: rgba(190, 190, 190, 0.748);
 }
 
 .gray {
@@ -22,6 +24,8 @@
   --heighlight-color: var(--teritiary-color);
   --text-color: white;
   --secondary-text-color: #676b64;
+  --slant-text-color: rgba(164, 164, 164, 0.744);
+  --slant-icon-color: rgba(190, 190, 190, 0.748);
 }
 
 .blue {
@@ -32,6 +36,8 @@
   --heighlight-color: #212532;
   --text-color: white;
   --secondary-text-color: #59676f;
+  --slant-text-color: rgba(164, 164, 164, 0.744);
+  --slant-icon-color: rgba(190, 190, 190, 0.748);
 }
 .red {
   --main-color: black;
@@ -41,6 +47,8 @@
   --heighlight-color: var(--teritiary-color);
   --text-color: white;
   --secondary-text-color: #6f5959;
+  --slant-text-color: rgba(164, 164, 164, 0.744);
+  --slant-icon-color: rgba(190, 190, 190, 0.748);
 }
 
 .red-red {
@@ -51,6 +59,22 @@
   --heighlight-color: var(--teritiary-color);
   --text-color: white;
   --secondary-text-color: #6f5959;
+  --slant-text-color: rgba(164, 164, 164, 0.744);
+  --slant-icon-color: rgba(190, 190, 190, 0.748);
+}
+
+.light-green {
+  --main-color: #fbfdf6;
+  --primary-color: #fbfdf6;
+  --secondary-color: #e7f1e6;
+  --teritiary-color: #d3e8d2;
+  --heighlight-color: var(--teritiary-color);
+  --heighlight-color: #d3e8d2;
+  --text-color: rgb(0, 0, 0);
+  --secondary-text-color: #000000;
+
+  --slant-text-color: black;
+  --slant-icon-color: black;
 }
 body {
   background-color: black;
@@ -108,6 +132,7 @@ body {
 }
 
 .chat {
+  color: var(--text-color);
   min-width: 100px;
   max-width: 40%;
   background-color: rgb(48, 48, 48);
@@ -125,7 +150,6 @@ body {
 
   .mssg {
     font-size: 16px;
-    // background-color: blue;
     padding: 4px 8px;
   }
 }
@@ -147,7 +171,6 @@ body {
 
 .chat-flex {
   .mssg {
-    // background-color: blue;
     width: 100%;
     p {
       padding-bottom: 3px;
@@ -179,6 +202,7 @@ body {
 .inner-body {
   height: 100vh;
   overflow: auto;
+  background-color: var(--primary-color);
   // filter: blur(5px);
 }
 
