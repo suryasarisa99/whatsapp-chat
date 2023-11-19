@@ -31,6 +31,7 @@ export default function ChatPage() {
     setShowClipBoard,
   } = useContext(ChatContext);
   let prvDate = useRef(null);
+  let prvMssg = useRef(null);
 
   useEffect(() => {
     // return () => {
@@ -60,6 +61,14 @@ export default function ChatPage() {
     setNames(set);
   }, [fileContent]);
 
+  function RenderChat({ chat, ind }) {
+    return (
+      <>
+        <Chat chat={chat} key={chat.mssg + "xx" + ind} ind={ind} />
+      </>
+    );
+  }
+
   return (
     <div
       className="inner-body"
@@ -83,15 +92,8 @@ export default function ChatPage() {
           loader={<p className="loading">Loading ...</p>}
           useWindow={false}
         >
-          {/* {messages.slice(0, 1000).map((chat, ind) => {
-            let Date = null;
-            if (prvDate.current != chat.date) {
-              Date = <p className="date">{chat.date}</p>;
-              prvDate.current = chat.date;
-            } */}
-
           {messages.slice(0, records).map((chat, ind) => {
-            return <Chat chat={chat} key={chat.mssg + "xx" + ind} ind={ind} />;
+            return <RenderChat key={ind} chat={chat} ind={ind} />;
           })}
         </InfiniteScroll>
       )}
@@ -100,14 +102,10 @@ export default function ChatPage() {
 }
 
 function getMessages(text, fileName) {
-  console.log(text);
   const messages = text.split(
     /\n(?=\d\d?\/\d\d?\/\d\d\d?\d?, \d\d?:\d\d\s?(?:pm|am|PM|AM)? - )/
   );
   messages.splice(0, 1);
-  // console.log(messages);
-
-  console.log(messages);
 
   return messages
     .map((message, index) => {
@@ -126,7 +124,6 @@ function getMessages(text, fileName) {
         mssg: mssg?.trim(),
         file: file?.trim(),
       };
-      // console.log(obj);
       if (fileName.includes("Bosch Siemens")) {
         if (mssg && mssg?.trim()?.length == 16) return obj;
       } else if (fileName.includes("Artes conference group")) {

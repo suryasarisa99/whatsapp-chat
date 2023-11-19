@@ -12,8 +12,33 @@
   --main-color: #111b21;
   --text-color: white;
   --secondary-text-color: #59676f;
+  --scb-clr: var(--secondary-color);
+  --pcb-clr: var(--primary-color);
   --slant-text-color: rgba(164, 164, 164, 0.744);
   --slant-icon-color: rgba(190, 190, 190, 0.748);
+}
+.new-look {
+  --primary-color: #005c4b;
+  --secondary-color: #0b141a;
+  --teritiary-color: #21c063;
+  --main-color: var(--secondary-color);
+  --heighlight-color: #103529;
+  --home-screen-clr: #0b141a;
+  --chat-screen-clr: black;
+  --scb-clr: #202c33;
+  --pcb-clr: var(--primary-color);
+  // --secondary-text-buble: #202c33;
+  .bottom-bar {
+    border-top: 0.2px solid #111f29ca;
+  }
+  .home-top-bar {
+    border-bottom: 0.2px solid #111f29ca;
+  }
+  .inner-body {
+  }
+  .home-chats {
+    padding-top: 20px;
+  }
 }
 
 .gray {
@@ -26,6 +51,8 @@
   --secondary-text-color: #676b64;
   --slant-text-color: rgba(164, 164, 164, 0.744);
   --slant-icon-color: rgba(190, 190, 190, 0.748);
+  --scb-clr: var(--secondary-color);
+  --pcb-clr: var(--primary-color);
 }
 
 .blue {
@@ -38,6 +65,8 @@
   --secondary-text-color: #59676f;
   --slant-text-color: rgba(164, 164, 164, 0.744);
   --slant-icon-color: rgba(190, 190, 190, 0.748);
+  --scb-clr: var(--secondary-color);
+  --pcb-clr: var(--primary-color);
 }
 .red {
   --main-color: black;
@@ -49,6 +78,8 @@
   --secondary-text-color: #6f5959;
   --slant-text-color: rgba(164, 164, 164, 0.744);
   --slant-icon-color: rgba(190, 190, 190, 0.748);
+  --scb-clr: var(--secondary-color);
+  --pcb-clr: var(--primary-color);
 }
 
 .red-red {
@@ -61,6 +92,8 @@
   --secondary-text-color: #6f5959;
   --slant-text-color: rgba(164, 164, 164, 0.744);
   --slant-icon-color: rgba(190, 190, 190, 0.748);
+  --scb-clr: var(--secondary-color);
+  --pcb-clr: var(--primary-color);
 }
 
 .light-green {
@@ -75,6 +108,8 @@
 
   --slant-text-color: black;
   --slant-icon-color: black;
+  --scb-clr: var(--secondary-color);
+  --pcb-clr: var(--primary-color);
 }
 body {
   background-color: black;
@@ -98,7 +133,7 @@ body {
   flex-shrink: 0;
   padding-right: 12px;
   .chat {
-    background-color: var(--primary-color);
+    background-color: var(--pcb-clr);
     order: 1;
     &-abs {
       .time {
@@ -114,7 +149,7 @@ body {
   padding-left: 12px;
 
   .chat {
-    background-color: var(--secondary-color);
+    background-color: var(--scb-clr);
     &-abs {
       .time {
         right: 4px;
@@ -202,7 +237,6 @@ body {
 .inner-body {
   height: 100vh;
   overflow: auto;
-  background-color: var(--primary-color);
   // filter: blur(5px);
 }
 

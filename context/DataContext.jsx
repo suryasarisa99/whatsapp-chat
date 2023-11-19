@@ -11,6 +11,7 @@ export default function DataProvider({ children }) {
     blue: "#181c21",
     red: "#211818",
     "light-green": "#fbfdf6",
+    "new-look": "#0b141a",
   };
   const [chats, setChats] = useState(
     JSON.parse(localStorage.getItem("chats")) || []
@@ -24,7 +25,7 @@ export default function DataProvider({ children }) {
 
   useEffect(() => {
     const theme = localStorage.getItem("theme") || "default";
-    if (theme == "default") setDefaultTheme(true);
+    if (theme == "default" || theme == "new-look") setDefaultTheme(true);
     else setDefaultTheme(false);
     document.documentElement?.classList?.add(theme);
     changeStatusBarColor(theme);

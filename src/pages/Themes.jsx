@@ -8,7 +8,7 @@ import BottomBar from "../components/BottomBar";
 import HomeTopBar from "../components/HomeTopBar";
 export default function Themes() {
   const navigate = useNavigate();
-  const themes = ["default", "gray", "blue", "red", "light-green"];
+  const themes = ["default", "new-look", "gray", "blue", "red", "light-green"];
   const { changeStatusBarColor, setDefaultTheme } = useContext(DataContext);
 
   return (
@@ -20,7 +20,7 @@ export default function Themes() {
             className={"theme-box " + theme}
             key={theme + ind}
             onClick={() => {
-              if (ind == 0) setDefaultTheme(true);
+              if (ind <= 1) setDefaultTheme(true);
               else setDefaultTheme(false);
               document.documentElement.className = "";
               document.documentElement.classList.add(themes[ind]);
