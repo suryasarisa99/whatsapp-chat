@@ -100,11 +100,14 @@ export default function ChatPage() {
 }
 
 function getMessages(text, fileName) {
+  console.log(text);
   const messages = text.split(
-    /\n(?=\d\d?\/\d\d?\/\d\d\d?\d?, \d\d?:\d\d\s?(?:pm|am)? - )/
+    /\n(?=\d\d?\/\d\d?\/\d\d\d?\d?, \d\d?:\d\d\s?(?:pm|am|PM|AM)? - )/
   );
   messages.splice(0, 1);
   // console.log(messages);
+
+  console.log(messages);
 
   return messages
     .map((message, index) => {
