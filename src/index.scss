@@ -346,3 +346,50 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.search-bar {
+  width: calc(100% - 18px);
+  .main-search-bar {
+    background-color: var(--scb-clr);
+    color: white;
+    display: flex;
+    border-radius: 22px;
+    padding: 10px 12px;
+    gap: 15px;
+    align-items: center;
+    margin: 4px 8px;
+    width: 100%;
+    padding-right: 20px;
+
+    input {
+      background-color: transparent;
+      border: none;
+      font-size: 19px;
+      flex-grow: 1;
+      color: white;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .len-search-bar {
+    display: flex;
+    padding: 4px 12px;
+    align-items: center;
+    gap: 8px;
+
+    input {
+      background-color: var(--scb-clr);
+      border: none;
+      font-size: 18px;
+      width: 120px;
+      border-radius: 6px;
+      color: white;
+      padding: 3px 8px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

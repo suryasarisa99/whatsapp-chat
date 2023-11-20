@@ -10,7 +10,8 @@ export default function ChatData({ children }) {
   let [records, setRecords] = useState(300);
   const [showClipBoard, setShowClipBoard] = useState(false);
   let [names, setNames] = useState([]);
-
+  let [query, setQuery] = useState("");
+  let [len, setLen] = useState();
   return (
     <ChatContext.Provider
       value={{
@@ -30,6 +31,10 @@ export default function ChatData({ children }) {
         setShowClipBoard,
         names,
         setNames,
+        query,
+        setQuery,
+        len,
+        setLen,
       }}
     >
       {children}

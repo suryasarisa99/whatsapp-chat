@@ -9,6 +9,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import TopBar from "../components/TopBar";
 import Info from "../components/Info";
 import { ChatContext } from "../../context/ChatData";
+import SearchBar from "../components/SeachBar";
 
 export default function ChatPage() {
   let { fileContent, fileName, isDefaultTheme } = useContext(DataContext);
@@ -25,10 +26,12 @@ export default function ChatPage() {
     setDirection,
     hasMore,
     setHasMore,
+    len,
     records,
     setRecords,
     showClipBoard,
     setShowClipBoard,
+    query,
   } = useContext(ChatContext);
   let prvDate = useRef(null);
   let prvMssg = useRef(null);
@@ -92,9 +95,28 @@ export default function ChatPage() {
           loader={<p className="loading">Loading ...</p>}
           useWindow={false}
         >
-          {messages.slice(0, records).map((chat, ind) => {
-            return <RenderChat key={ind} chat={chat} ind={ind} />;
-          })}
+          {messages
+            .filter((m) => {
+              if (!query && !len) return true;
+              if (len && !len.endsWith(",")) {
+                if (
+                  len
+                    .split(",")
+                    .map((i) => parseInt(i))
+                    .filter((item) => !isNaN(item))
+                    .includes(m.mssg.length)
+                ) {
+                  return true;
+                }
+              }
+              if (query && m.mssg.toLowerCase().includes(query.toLowerCase()))
+                return true;
+              return false;
+            })
+            .slice(0, records)
+            .map((chat, ind) => {
+              return <RenderChat key={ind} chat={chat} ind={ind} />;
+            })}
         </InfiniteScroll>
       )}
     </div>
